@@ -2,17 +2,6 @@ body {
   background-color: purple;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-h1 {
-  text-align: left;
-  padding: 5px;
-  font-size: 35px;
-}
-
-p {
-  font-size: 16px;
-  padding: 5px;
-  line-height: 1.5;
-}
 
 a {
   color: purple;
@@ -27,7 +16,7 @@ footer {
 
 .weather-app-content {
   background-color: white;
-  margin: 0 auto;
+  margin: 40px auto;
   padding: 15px;
   max-width: 60%;
   border-radius: 10px;
@@ -36,7 +25,7 @@ footer {
   max-width: 600px;
 }
 .search-input {
-  background-color: pink;
+  background-color: rgb(236, 149, 200);
   border: 1px dotted purple;
   padding: 5px;
   border-radius: 5px;
@@ -53,12 +42,44 @@ footer {
   width: 20%;
 }
 
+.weather-city {
+  text-align: left;
+  padding: 5px;
+  font-size: 35px;
+}
+
 .weather-details {
   display: flex;
   justify-content: space-between;
 }
 
+.weather-date-conditions {
+  font-size: 16px;
+  padding: 5px;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.values {
+  color: rgb(236, 149, 200);
+}
+
 .temperature-today {
   font-size: 30px;
   padding: 10px;
+  display: flex;
+}
+
+.temperature-emoji {
+  font-size: 60px;
+  margin-top: -95px;
+  margin-right: -72px;
+}
+.temperature-value {
+  font-size: 58px;
+  font-weight: bold;
+}
+.temperature-unit {
+  font-size: 38px;
+  font-weight: 400;
 }
