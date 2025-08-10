@@ -9,18 +9,24 @@
   <body>
     <div class="weather-app-content">
       <header>
-        <form class="search-city">
+        <form class="search-city" id="search-city">
           <input
             type="seach"
             placeholder="Enter a city"
             required
             class="search-input"
+            id="search-input"
           />
-          <input type="submit" value="Search" class="search-button" />
+          <input
+            type="submit"
+            value="Search"
+            class="search-button"
+            id="search-button"
+          />
         </form>
       </header>
       <main>
-        <h1 class="weather-city">Berlin</h1>
+        <h1 class="weather-city" id="weather-city">Berlin</h1>
         <div class="weather-details">
           <p class="weather-date-conditions">
             <strong>Monday</strong> 10 August 2025 18:00
