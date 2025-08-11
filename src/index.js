@@ -16,11 +16,10 @@ function findCityTemperature(city) {
 function searchAction(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#search-input");
-  let weatherCity = document.querySelector("#weather-city");
-  weatherCity.innerHTML = searchInput.value;
   findCityTemperature(searchInput.value);
 }
 
 let searchFormElement = document.querySelector("#search-city");
-
 searchFormElement.addEventListener("submit", searchAction);
+
+findCityTemperature("Berlin");
