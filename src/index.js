@@ -22,6 +22,12 @@ function updateCityTemperature(response) {
     "Saturday",
   ];
   let currentDay = days[date.getDay()];
+  let emoji = document.querySelector("#emoji");
+  emoji.innerHTML = `<img
+    src="${response.data.condition.icon_url}"
+    class="temperature-emoji"
+    id="temperature-emoji"
+  />`;
 
   if (hours < 10) {
     hours = `0${hours}`;
