@@ -23,11 +23,6 @@ function updateCityTemperature(response) {
   ];
   let currentDay = days[date.getDay()];
   let emoji = document.querySelector("#emoji");
-  emoji.innerHTML = `<img
-    src="${response.data.condition.icon_url}"
-    class="temperature-emoji"
-    id="temperature-emoji"
-  />`;
 
   if (hours < 10) {
     hours = `0${hours}`;
@@ -44,6 +39,11 @@ function updateCityTemperature(response) {
   humidity.innerHTML = `${response.data.temperature.humidity}%`;
   windSpeed.innerHTML = `${roundedWindSpeed}km/h`;
   weatherDescription.innerHTML = response.data.condition.description;
+  emoji.innerHTML = `<img
+    src="${response.data.condition.icon_url}"
+    class="temperature-emoji"
+    id="temperature-emoji"
+  />`;
 }
 
 function findCityTemperature(city) {
