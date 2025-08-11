@@ -22,9 +22,17 @@ function updateCityTemperature(response) {
     "Saturday",
   ];
   let currentDay = days[date.getDay()];
+
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
   time.innerHTML = `${currentTime}`;
   weekDay.innerHTML = `${currentDay}`;
-
   weatherCity.innerHTML = response.data.city;
   currentDayTemperature.innerHTML = `${temperature}`;
   humidity.innerHTML = `${response.data.temperature.humidity}%`;
