@@ -18,11 +18,11 @@ footer {
   background-color: white;
   margin: 40px auto;
   padding: 15px;
-  max-width: 60%;
+  max-width: 70%;
   border-radius: 10px;
 }
 .search-city {
-  max-width: 600px;
+  width: 100%;
 }
 .search-input {
   background-color: rgb(236, 149, 200);
@@ -31,7 +31,7 @@ footer {
   border-radius: 5px;
   font-size: 16px;
   color: purple;
-  width: 60%;
+  width: 70%;
 }
 .search-button {
   padding: 5px;
