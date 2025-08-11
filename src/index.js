@@ -6,8 +6,24 @@ function updateCityTemperature(response) {
   let humidity = document.querySelector("#humidity");
   let windSpeed = document.querySelector("#wind-speed");
   let roundedWindSpeed = Math.round(response.data.wind.speed);
-  let time = document.querySelector("#time");
   let date = new Date(response.data.time * 1000);
+  let time = document.querySelector("#time");
+  let hours = `${date.getHours()}`;
+  let minutes = `${date.getMinutes()}`;
+  let currentTime = `${hours}:${minutes}`;
+  let weekDay = document.querySelector("#weekDay");
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let currentDay = days[date.getDay()];
+  time.innerHTML = `${currentTime}`;
+  weekDay.innerHTML = `${currentDay}`;
 
   weatherCity.innerHTML = response.data.city;
   currentDayTemperature.innerHTML = `${temperature}`;
