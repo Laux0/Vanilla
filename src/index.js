@@ -10,7 +10,7 @@ function updateCityTemperature(response) {
   let time = document.querySelector("#time");
   let hours = `${date.getHours()}`;
   let minutes = `${date.getMinutes()}`;
-  let currentTime = `${hours}:${minutes}`;
+
   let weekDay = document.querySelector("#weekDay");
   let days = [
     "Sunday",
@@ -32,6 +32,8 @@ function updateCityTemperature(response) {
     minutes = `0${minutes}`;
   }
 
+  let currentTime = `${hours}:${minutes}`;
+
   time.innerHTML = `${currentTime}`;
   weekDay.innerHTML = `${currentDay}`;
   weatherCity.innerHTML = response.data.city;
@@ -44,6 +46,8 @@ function updateCityTemperature(response) {
     class="temperature-emoji"
     id="temperature-emoji"
   />`;
+
+  console.log(date.getHours);
 }
 
 function findCityTemperature(city) {
