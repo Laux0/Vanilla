@@ -97,8 +97,9 @@ footer {
 }
 
 .forecast-temperatures {
-  text-align: center;
   color: rgb(236, 149, 200);
   font-size: 16px;
   line-height: 1.5;
+  display: flex;
+  justify-content: center;
 }
