@@ -63,7 +63,22 @@ function searchAction(event) {
   findCityTemperature(searchInput.value);
 }
 
+function showForecast() {
+  let forecast = document.querySelector("#forecast");
+  forecast.innerHTML = `<div class="forecast-day">
+            <div class="forecast-weekday">Fri</div>
+            <div class="forecast-emoji">☀️</div>
+            <div class="forecast-temperatures">
+              <div class="forecast-variation">
+                <strong>19°</strong>
+              </div>
+              <div class="forecast-variation">12°</div>
+            </div>
+          </div>`;
+}
+
 let searchFormElement = document.querySelector("#search-city");
 searchFormElement.addEventListener("submit", searchAction);
 
 findCityTemperature("Berlin");
+showForecast();
