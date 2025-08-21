@@ -65,8 +65,14 @@ function searchAction(event) {
 
 function showForecast() {
   let forecast = document.querySelector("#forecast");
-  forecast.innerHTML = `<div class="forecast-day">
-            <div class="forecast-weekday">Fri</div>
+  let days = ["Fri", "Sat", "Sun", "Mon"];
+  let forecastHtml = "";
+
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `<div class="forecast-day">
+            <div class="forecast-weekday">${day}</div>
             <div class="forecast-emoji">☀️</div>
             <div class="forecast-temperatures">
               <div class="forecast-variation">
@@ -75,6 +81,8 @@ function showForecast() {
               <div class="forecast-variation">12°</div>
             </div>
           </div>`;
+  });
+  forecast.innerHTML = forecastHtml;
 }
 
 let searchFormElement = document.querySelector("#search-city");
