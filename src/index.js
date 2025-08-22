@@ -78,7 +78,9 @@ function showForecast(response) {
       forecastHtml +
       `<div class="forecast-day">
             <div class="forecast-weekday">Tue</div>
-            <div class="forecast-emoji">☀️</div>
+            <div><img class="forecast-emoji" src="${
+              day.condition.icon_url
+            }" /></div>
             <div class="forecast-temperatures">
               <div class="forecast-variation">
                 <strong>${Math.round(day.temperature.maximum)}°</strong>
