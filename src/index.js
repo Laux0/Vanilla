@@ -1,3 +1,44 @@
+function formatForecastDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[date.getDay()];
+}
+
+function showForecast(response) {
+  let forecast = document.querySelector("#forecast");
+  let forecastHtml = "";
+
+  response.data.daily.forEach(function (day, index) {
+    if (index < 4) {
+      forecastHtml =
+        forecastHtml +
+        `<div class="forecast-day">
+            <div class="forecast-weekday">${formatForecastDay(day.time)}</div>
+            <div><img class="forecast-emoji" src="${
+              day.condition.icon_url
+            }" /></div>
+            <div class="forecast-temperatures">
+              <div class="forecast-variation">
+                <strong>${Math.round(day.temperature.maximum)}°</strong>
+              </div>
+              <div class="forecast-variation">${Math.round(
+                day.temperature.minimum
+              )}°</div>
+            </div>
+          </div>`;
+    }
+  });
+  forecast.innerHTML = forecastHtml;
+}
+
+function findCityForecast(city) {
+  let keyApi = "83bco8b8afca3aft80c7a9a59f08542a";
+  let apiForecastUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${keyApi}&units=metric`;
+  axios.get(apiForecastUrl).then(showForecast);
+  console.log(apiForecastUrl);
+}
+
 function updateCityTemperature(response) {
   let currentDayTemperature = document.querySelector("#temperature-value");
   let temperature = Math.round(response.data.temperature.current);
@@ -48,50 +89,20 @@ function updateCityTemperature(response) {
   />`;
 
   console.log(date.getHours);
-  showForecast(response.data.city);
+  findCityForecast(response.data.city);
 }
 
 function findCityTemperature(city) {
   let keyApi = "83bco8b8afca3aft80c7a9a59f08542a";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${keyApi}&units=metric`;
-  let apiForecastUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${keyApi}&units=metric`;
   axios.get(apiUrl).then(updateCityTemperature);
-  axios.get(apiForecastUrl).then(showForecast);
   console.log(apiUrl);
-  console.log(apiForecastUrl);
 }
 
 function searchAction(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#search-input");
   findCityTemperature(searchInput.value);
-}
-
-function showForecast(response) {
-  console.log(response.data);
-
-  let forecast = document.querySelector("#forecast");
-  let forecastHtml = "";
-
-  response.data.daily.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      `<div class="forecast-day">
-            <div class="forecast-weekday">Tue</div>
-            <div><img class="forecast-emoji" src="${
-              day.condition.icon_url
-            }" /></div>
-            <div class="forecast-temperatures">
-              <div class="forecast-variation">
-                <strong>${Math.round(day.temperature.maximum)}°</strong>
-              </div>
-              <div class="forecast-variation">${Math.round(
-                day.temperature.minimum
-              )}°</div>
-            </div>
-          </div>`;
-  });
-  forecast.innerHTML = forecastHtml;
 }
 
 let searchFormElement = document.querySelector("#search-city");
