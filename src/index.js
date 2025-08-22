@@ -53,8 +53,11 @@ function updateCityTemperature(response) {
 function findCityTemperature(city) {
   let keyApi = "83bco8b8afca3aft80c7a9a59f08542a";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${keyApi}&units=metric`;
+  let apiForecastUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${keyApi}&units=metric`;
   axios.get(apiUrl).then(updateCityTemperature);
+  axios.get(apiForecastUrl).then(showForecast);
   console.log(apiUrl);
+  console.log(apiForecastUrl);
 }
 
 function searchAction(event) {
@@ -63,7 +66,7 @@ function searchAction(event) {
   findCityTemperature(searchInput.value);
 }
 
-function showForecast() {
+function showForecast(response) {
   let forecast = document.querySelector("#forecast");
   let days = ["Fri", "Sat", "Sun", "Mon"];
   let forecastHtml = "";
