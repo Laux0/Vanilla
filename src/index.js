@@ -48,6 +48,7 @@ function updateCityTemperature(response) {
   />`;
 
   console.log(date.getHours);
+  showForecast(response.data.city);
 }
 
 function findCityTemperature(city) {
@@ -67,21 +68,24 @@ function searchAction(event) {
 }
 
 function showForecast(response) {
+  console.log(response.data);
+
   let forecast = document.querySelector("#forecast");
-  let days = ["Fri", "Sat", "Sun", "Mon"];
   let forecastHtml = "";
 
-  days.forEach(function (day) {
+  response.data.daily.forEach(function (day) {
     forecastHtml =
       forecastHtml +
       `<div class="forecast-day">
-            <div class="forecast-weekday">${day}</div>
+            <div class="forecast-weekday">Tue</div>
             <div class="forecast-emoji">☀️</div>
             <div class="forecast-temperatures">
               <div class="forecast-variation">
-                <strong>19°</strong>
+                <strong>${Math.round(day.temperature.maximum)}°</strong>
               </div>
-              <div class="forecast-variation">12°</div>
+              <div class="forecast-variation">${Math.round(
+                day.temperature.minimum
+              )}°</div>
             </div>
           </div>`;
   });
@@ -92,4 +96,3 @@ let searchFormElement = document.querySelector("#search-city");
 searchFormElement.addEventListener("submit", searchAction);
 
 findCityTemperature("Berlin");
-showForecast();
