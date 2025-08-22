@@ -9,7 +9,7 @@ function showForecast(response) {
   let forecast = document.querySelector("#forecast");
   let forecastHtml = "";
 
-  response.data.daily.forEach(function (day, index) {
+  response.data.daily.slice(1, 5).forEach(function (day, index) {
     if (index < 4) {
       forecastHtml =
         forecastHtml +
